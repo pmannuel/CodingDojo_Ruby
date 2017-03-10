@@ -1,0 +1,22 @@
+<h1><%= @dojo.city %>'s <%= @student.first_name %> <%= @student.last_name %></h1>
+<br>
+<p>Email: <%= @student.email %></p>
+<br>
+<h3>Cohort:</h3>
+<br>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+  </tr>
+  <% @classmates.each do |classmate| %>
+  <tr>
+    <td><%= classmate.first_name %></td>
+    <td><%= classmate.last_name %></td>
+    <td><%= classmate.email %></td>
+  </tr>
+  <% end %>
+</table>
+<br>
+<a href="/">Home</a> | <a href="/edit/student/<%= @student.id %>">Edit</a>

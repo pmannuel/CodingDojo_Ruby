@@ -1,0 +1,21 @@
+<h1>New Dojo</h1>
+<br>
+<% if flash[:errors] != nil %>
+  <div id="errors">
+    <% flash[:errors].each do |msg| %>
+        <li><%= msg %></li>
+    <% end %>
+  </div>
+<% end %>
+<br>
+<form action="/create" method="post" >
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <input type="string" name="branch" placeholder="Branch"><br />
+  <input type="string" name="street" placeholder="Street"><br />
+  <input type="string" name="city" placeholder="City"><br />
+  <input type="string" name="state" placeholder="State"><br />
+  <br>
+  <input type='submit' value='Create'>
+</form>
+<br>
+<a href="/">Go Back</a>

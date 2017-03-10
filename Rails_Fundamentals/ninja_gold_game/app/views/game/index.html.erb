@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Ninja Gold Game: Ruby</title>
+        <style>
+            #activities {
+                display: flex;
+                justify-content: space-around;
+            }
+            .activity {
+                border: 1px solid black;
+                height: 25vh;
+                width: 25vh;
+                text-align: center;
+            }
+            #log {
+                border: 1px solid black;
+                height: 20vh;
+                overflow-y: scroll;
+            }
+
+            button {
+                font-family: Arial;
+                color: #ffffff;
+                background: #96a1a8;
+                padding: 10px 20px;
+                text-decoration: none;
+            }
+            button:hover {
+                background: #545454;
+                text-decoration: none;
+            }
+
+        </style>
+    </head>
+    <body>
+        <p>Your gold:
+            <b style="color:<%= session[:gold_color] %>;"><%= session[:gold] %></b>
+        </p>
+        <div id="activities">
+            <div class="activity" style="background-color:#8DA692;">
+                <h1>Farm</h1>
+                <br>
+                <p>(earns 10-20 golds)</p>
+                <br>
+                <a href="/earn/farm">
+                    <button>💰</button>
+                </a>
+            </div>
+            <div class="activity" style="background-color:#D6CCC1;">
+                <h1>Cave</h1>
+                <br>
+                <p>(earns 5-10 golds)</p>
+                <br>
+                <a href="/earn/cave">
+                    <button>💰</button>
+                </a>
+            </div>
+            <div class="activity" style="background-color:#85B6BC;">
+                <h1>House</h1>
+                <br>
+                <p>(earns 2-5 golds)</p>
+                <br>
+                <a href="/earn/house">
+                    <button>💰</button>
+                </a>
+            </div>
+            <div class="activity" style="background-color:#E77696;">
+                <h1>Casino</h1>
+                <br>
+                <p>(earns/loses 0-50 golds)</p>
+                <br>
+                <a href="/earn/casino">
+                    <button>💰</button>
+                </a>
+            </div>
+        </div>
+        <div id="activity_log">
+            <p>Activity:</p>
+            <div id="log">
+                <% session[:logs].each do |log| %>
+                <p style="color:<%= log['txt-color'] %>"><%= log['content'] %></p>
+                <% end %>
+            </div>
+        </div>
+        <br>
+        <a href="/reset">
+            <button>Reset</button>
+        </a>
+    </body>
+</html>

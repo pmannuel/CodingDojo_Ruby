@@ -1,0 +1,12 @@
+<h1>Submit a survey dammit!</h1>
+<p>
+  <form action="/survey/create" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    Your name: <input type="string" name="ninja[name]">
+    Dojo location: <input type="string" name="ninja[dojo]">
+    Favorite language: <input type="string" name="ninja[language]">
+    Comment (optional):
+    <textarea name="ninja[comment]" rows="8" cols="80"></textarea>
+    <input type='submit' value='Submit'>
+</from>
+</p>

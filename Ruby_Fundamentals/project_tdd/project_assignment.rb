@@ -1,7 +1,7 @@
 class Project
     @@project_num = 0
     attr_accessor :name, :description
-  def initialize(name, description)
+  def initialize(name="nameless", description="none")
       @name = name
       @description = description
       @@project_num += 1
@@ -9,9 +9,6 @@ class Project
   end
   def elevator_pitch
       puts "#{@name}, #{@description}"
+      return "#{@name}, #{@description}"
   end
 end
-
-project1 = Project.new("Project Rescue", "Annihilate all zombies in the lobby and rescue survivors trapped in the convenience store.")
-puts project1.name
-project1.elevator_pitch

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Wall Assignment</title>
+</head>
+<body>
+  <div class="nav-bar">
+    <h1>Welcome, <%= session[:curr_user][0]['username']%></h1>
+    <a id="log-out-button" href="log_out">Log Out</a>
+  </div>
+  <div class="message-console">
+    <h1>Post a Message</h1>
+    <% if flash[:errors] != nil %>
+    <div style="color:white;background-color:red;width:20%;" id="errors">
+      <% flash[:errors].each do |msg| %>
+          <p><%= msg %></p>
+      <% end %>
+    </div>
+    <% end %>
+    <form action="post_message" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+    <input type="text" name="message" placeholder="Spill your thoughts...">
+    <input type='submit' value='Post a Message'>
+    </form>
+  </div>
+  <div id="messages">
+  <% @messages.each do |message| %>
+  <div class="message">
+    <h3><%= message.user.username %> - <%= message.created_at %></h3>
+    <p><%= message.message %></p>
+  </div>
+  <% end %>
+  </div>
+</body>
+</html>

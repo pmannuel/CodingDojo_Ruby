@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>UserAssignment</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+  <div id="errors">
+    <% if flash[:errors].is_a? String  %>
+    <p><%= flash[:errors] %></p>
+    <% else %>
+      <% if flash[:errors] != nil %>
+        <% flash[:errors].each do |msg| %>
+            <p><%= msg %></p>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if current_user %>
+    <form action="/sessions/<%=current_user.id%>" method="post">
+      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+      <input type="hidden" name="_method" value="delete">
+      <input type="submit" value="Log Out">
+    </form>
+  <% end %>
+
+  <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,9 @@
+<form action="create" method="post">
+<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+<input type="text" name="name" placeholder="Name">
+<input type="text" name="email" placeholder="Email">
+<input type="text" name="password" placeholder="Password">
+<input type="text" name="password_confirmation" placeholder="Password Confirmation">
+<input type='submit' value='Join'>
+</form>
+<p>Already a member? <a href="/sessions/new">Log In</a></p>
